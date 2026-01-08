@@ -1,33 +1,23 @@
-import { motion } from "framer-motion";
 import { Smartphone } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="py-10 border-t border-border/50 bg-card/50">
+    <footer className="py-8 md:py-10 border-t border-border/30 bg-card/30">
       <div className="container mx-auto px-4">
-        <motion.div
-          className="text-center"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          <div className="flex items-center justify-center gap-3 mb-4">
-            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center">
-              <Smartphone className="w-5 h-5 text-primary" />
+        <div className="text-center">
+          <div className="flex items-center justify-center gap-2 mb-3">
+            <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center">
+              <Smartphone className="w-4 h-4 text-primary" />
             </div>
-            <span className="text-xl font-bold text-gradient">
-              निज़ामी मोबाइल शॉप
-            </span>
+            <span className="text-lg font-bold text-gradient">निज़ामी मोबाइल शॉप</span>
           </div>
-          
-          <p className="text-muted-foreground text-sm">
+          <p className="text-muted-foreground text-xs md:text-sm">
             © {new Date().getFullYear()} Nizami Mobile Shop. All rights reserved.
           </p>
-          <p className="text-muted-foreground text-xs mt-2">
+          <p className="text-muted-foreground text-xs mt-1">
             Made with ❤️ by Sahil Khan
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
