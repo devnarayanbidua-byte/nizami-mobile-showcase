@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { Phone, MessageCircle, Instagram, MapPin, Clock, ChevronRight } from "lucide-react";
 import { memo } from "react";
+import sahilKhanImg from "@/assets/sahil-khan.jpg";
 
 const ContactCard = memo(({ 
   href, 
@@ -75,77 +76,76 @@ const ContactSection = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-xl mx-auto space-y-4">
-          {/* Phone */}
-          <ContactCard
-            href={`tel:+91${phoneNumber}`}
-            gradient="from-blue-600 to-blue-700"
-            icon={Phone}
-            title="कॉल करें"
-            subtitle={`+91 ${phoneNumber}`}
-            delay={0}
-            shadow="0 8px 30px rgba(59, 130, 246, 0.3)"
-          />
+        <div className="grid lg:grid-cols-2 gap-8 max-w-4xl mx-auto items-center">
+          {/* Owner Photo Card */}
+          <motion.div
+            className="order-2 lg:order-1"
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="card-premium rounded-2xl p-4 md:p-6 text-center">
+              <div className="relative w-40 h-40 md:w-48 md:h-48 mx-auto mb-4 rounded-2xl overflow-hidden gold-glow">
+                <img
+                  src={sahilKhanImg}
+                  alt="Sahil Khan - Owner"
+                  className="w-full h-full object-cover object-top"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 border-2 border-primary/30 rounded-2xl" />
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold text-gradient mb-1">Sahil Khan</h3>
+              <p className="text-muted-foreground text-sm mb-3">Shop Owner</p>
+              <p className="text-foreground/80 italic">"आपकी सेवा में हमेशा तत्पर"</p>
+              
+              {/* Info Pills */}
+              <div className="flex flex-wrap justify-center gap-2 mt-4">
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-xs">
+                  <Clock className="w-3 h-3 text-primary" />
+                  <span className="text-muted-foreground">10 AM - 9 PM</span>
+                </div>
+                <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-xs">
+                  <MapPin className="w-3 h-3 text-primary" />
+                  <span className="text-muted-foreground">Contact for address</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
-          {/* WhatsApp */}
-          <ContactCard
-            href={whatsappLink}
-            gradient="from-green-500 to-green-600"
-            icon={MessageCircle}
-            title="WhatsApp चैट"
-            subtitle="Instant Reply • 24/7"
-            delay={0.1}
-            shadow="0 8px 30px rgba(34, 197, 94, 0.3)"
-          />
+          {/* Contact Cards */}
+          <div className="order-1 lg:order-2 space-y-4">
+            <ContactCard
+              href={`tel:+91${phoneNumber}`}
+              gradient="from-blue-600 to-blue-700"
+              icon={Phone}
+              title="कॉल करें"
+              subtitle={`+91 ${phoneNumber}`}
+              delay={0}
+              shadow="0 8px 30px rgba(59, 130, 246, 0.3)"
+            />
 
-          {/* Instagram */}
-          <ContactCard
-            href={instagramLink}
-            gradient="from-purple-500 via-pink-500 to-orange-500"
-            icon={Instagram}
-            title="Instagram फॉलो करें"
-            subtitle="@nizami__mobaileshop_"
-            delay={0.2}
-            shadow="0 8px 30px rgba(236, 72, 153, 0.3)"
-          />
+            <ContactCard
+              href={whatsappLink}
+              gradient="from-green-500 to-green-600"
+              icon={MessageCircle}
+              title="WhatsApp चैट"
+              subtitle="Instant Reply • 24/7"
+              delay={0.1}
+              shadow="0 8px 30px rgba(34, 197, 94, 0.3)"
+            />
+
+            <ContactCard
+              href={instagramLink}
+              gradient="from-purple-500 via-pink-500 to-orange-500"
+              icon={Instagram}
+              title="Instagram फॉलो करें"
+              subtitle="@nizami__mobaileshop_"
+              delay={0.2}
+              shadow="0 8px 30px rgba(236, 72, 153, 0.3)"
+            />
+          </div>
         </div>
-
-        {/* Info Cards */}
-        <motion.div
-          className="mt-10 grid grid-cols-2 gap-4 max-w-xl mx-auto"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.3 }}
-        >
-          <div className="flex items-center gap-3 p-3 md:p-4 rounded-xl card-premium">
-            <Clock className="w-6 h-6 text-primary flex-shrink-0" />
-            <div className="min-w-0">
-              <h4 className="font-semibold text-foreground text-sm">Shop Timing</h4>
-              <p className="text-xs text-muted-foreground truncate">10 AM - 9 PM</p>
-            </div>
-          </div>
-          <div className="flex items-center gap-3 p-3 md:p-4 rounded-xl card-premium">
-            <MapPin className="w-6 h-6 text-primary flex-shrink-0" />
-            <div className="min-w-0">
-              <h4 className="font-semibold text-foreground text-sm">Location</h4>
-              <p className="text-xs text-muted-foreground truncate">Contact for address</p>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Owner */}
-        <motion.div
-          className="text-center mt-10 p-5 md:p-6 rounded-2xl card-premium max-w-sm mx-auto"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.4 }}
-        >
-          <p className="text-muted-foreground text-sm mb-1">Shop Owner</p>
-          <h3 className="text-xl md:text-2xl font-bold text-gradient">Sahil Khan</h3>
-          <p className="text-sm text-muted-foreground mt-2">"आपकी सेवा में हमेशा तत्पर"</p>
-        </motion.div>
       </div>
     </section>
   );
