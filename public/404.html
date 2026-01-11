@@ -1,19 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="hi">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>निज़ामी मोबाइल शॉप</title>
+    <style>
+      body { margin: 0; background: #0d0f14; min-height: 100vh; }
+    </style>
     <script type="text/javascript">
-      // GitHub Pages SPA redirect
-      var pathSegmentsToKeep = 0;
-      var l = window.location;
-      l.replace(
-        l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +
-        l.pathname.split('/').slice(0, 1 + pathSegmentsToKeep).join('/') + '/?/' +
-        l.pathname.slice(1).split('/').slice(pathSegmentsToKeep).join('/').replace(/&/g, '~and~') +
-        (l.search ? '&' + l.search.slice(1).replace(/&/g, '~and~') : '') +
-        l.hash
-      );
+      // GitHub Pages SPA redirect - handles client-side routing
+      (function() {
+        var segmentsToKeep = window.location.pathname.split('/').length > 2 ? 1 : 0;
+        var loc = window.location;
+        var redirectPath = loc.pathname.split('/').slice(segmentsToKeep + 1).join('/').replace(/&/g, '~and~');
+        var redirectSearch = loc.search ? '&' + loc.search.slice(1).replace(/&/g, '~and~') : '';
+        var basePath = loc.pathname.split('/').slice(0, segmentsToKeep + 1).join('/') || '/';
+        loc.replace(
+          loc.protocol + '//' + loc.hostname + (loc.port ? ':' + loc.port : '') +
+          basePath + '/?p=/' + redirectPath + redirectSearch + loc.hash
+        );
+      })();
     </script>
   </head>
   <body></body>

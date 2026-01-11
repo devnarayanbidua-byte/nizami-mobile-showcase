@@ -5,6 +5,8 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
+  // For GitHub Pages - set base to './' for relative paths
+  base: "./",
   server: {
     host: "::",
     port: 8080,
@@ -16,10 +18,10 @@ export default defineConfig(({ mode }) => ({
     },
   },
   build: {
-    // Optimize for production
     target: "esnext",
     minify: "esbuild",
     cssMinify: true,
+    assetsInlineLimit: 4096,
     rollupOptions: {
       output: {
         manualChunks: {
